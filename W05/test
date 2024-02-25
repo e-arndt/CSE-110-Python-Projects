@@ -1,0 +1,28 @@
+smallest = 99
+my_list = [1, 9, 19, 22]
+
+for value in my_list:
+
+    if value < smallest:
+
+        smallest = value
+
+print(f"The smallest is {smallest}")
+
+# End of option 3
+else:
+                    remove_qty = int(input(f"How many {list_items[remove_item]} of {list_quantity[remove_item]} to remove? "))
+                    if remove_qty <= 0:
+                        print(f"No items removed.")
+                        time.sleep(2)
+                        menu()
+                    elif remove_qty > int(list_quantity[remove_item]):
+                        print(f"Not a valid quantity.")
+                        time.sleep(2)
+                        menu()
+                    else:
+                        print(f"{remove_qty} {list_items[remove_item]} removed.")
+                        amount = int(list_quantity[remove_item]) - (remove_qty)
+                        list_quantity[remove_item] = str(amount)
+                        time.sleep(2)
+                        

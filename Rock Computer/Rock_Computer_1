@@ -1,0 +1,265 @@
+# Author: Eric Arndt
+# Rock Computer
+
+
+# Import library
+import os
+import time
+
+
+path = "D:\\Users\\Eric\\Documents\\Education\\BYU_Pathways\\PCB 103\\CSE 110\\CSE 110 Code Projects\\Rock Computer\\Rock_Data.csv"
+
+# Set initial variable values
+new_line         = '\n'
+run              = "run"
+esc              = '\x1b'
+red_bd           = esc + '[41m'
+normal           = esc + '[0m'
+user_search      = []
+user_search_rem  = []
+count            = 0
+mineral_name     = ""
+formula_code     = ""
+spec_grav_range  = ""
+hardness_range   = ""
+streak_color     = ""
+luster           = ""
+visual_color     = ""
+cleavage         = ""
+crystal_shape    = ""
+remarks          = ""
+mineral_search   = ""
+datasheet_search = ""
+main_banner      = "THE MINERAL IDENTIFIER"
+data_banner      = "MINERAL DATASHEET SEARCH"
+ident_banner     = "IDENTIFY MINERAL"
+mineral_banner   = (f"Datasheet for {mineral_name.upper()}")
+
+
+# while loop until user quits
+while run != "n":
+
+    # Set function for clearing terminal screen
+    def clrscr():
+        # Check if Operating System is Mac and Linux
+        if os.name == 'posix':
+            _ = os.system('clear')
+        else:
+        # Else Operating System is Windows (os.name = nt)
+            _ = os.system('cls')
+
+
+    def reset_var():
+        user_search.clear()
+        count               = 0
+        mineral_search      = ""
+        datasheet_search    = ""
+        mineral_name        = ""
+        formula_code        = ""
+        spec_grav_range     = ""
+        hardness_range      = ""
+        streak_color        = ""
+        luster              = ""
+        visual_color        = ""
+        cleavage            = ""
+        crystal_shape       = ""
+        remarks             = ""
+        mineral_banner      = ""
+
+
+    def read_file_datasheet():
+        with open(path, "r") as mineral_data:
+        # Read the first line of data from the file and store in the variable "header" then move to the next line of data
+
+            # Loop to step through each line of data in the file
+            for mineral in mineral_data:
+                # Strip off whitespaces in data string
+                mineral_record   = mineral.strip()
+                # Split string of data into separate parts by looking for a ";"
+                mineral_record   = mineral.split(";")
+                # Assign variables to each part of the split data
+                mineral_name    = mineral_record[0]
+                formula_code    = mineral_record[1]
+                spec_grav_range = mineral_record[2]
+                hardness_range  = mineral_record[3]
+                streak_color    = mineral_record[4]
+                luster          = mineral_record[5]
+                visual_color    = mineral_record[6]
+                cleavage        = mineral_record[7]
+                crystal_shape   = mineral_record[8]
+                remarks         = mineral_record[9]
+
+                 
+                if datasheet_search.lower() == (mineral_name.lower()):
+                    user_search.append(mineral_name)
+                    user_search.append(formula_code)
+                    user_search.append(spec_grav_range)
+                    user_search.append(hardness_range)
+                    user_search.append(streak_color)
+                    user_search.append(luster)
+                    user_search.append(visual_color)
+                    user_search.append(cleavage)
+                    user_search.append(crystal_shape)
+                    user_search.append(remarks)
+
+
+    def read_file_identify(symbol_search):
+        with open(path, "r") as mineral_data:
+        # Read the first line of data from the file and store in the variable "header" then move to the next line of data
+
+            # Loop to step through each line of data in the file
+            for mineral in mineral_data:
+                # Strip off whitespaces in data string
+                mineral_record   = mineral.strip()
+                # Split string of data into separate parts by looking for a ";"
+                mineral_record   = mineral.split(";")
+                # Assign variables to each part of the split data
+                mineral_name    = mineral_record[0]
+                formula_code    = mineral_record[1]
+                spec_grav_range = mineral_record[2]
+                hardness_range  = mineral_record[3]
+                streak_color    = mineral_record[4]
+                luster          = mineral_record[5]
+                visual_color    = mineral_record[6]
+                cleavage        = mineral_record[7]
+                crystal_shape   = mineral_record[8]
+                remarks         = mineral_record[9]
+
+                 
+                if symbol_search.lower() == (formula_code.lower()):
+                    user_search.append(mineral_name)
+                    user_search.append(formula_code)
+                    user_search.append(spec_grav_range)
+                    user_search.append(hardness_range)
+                    user_search.append(streak_color)
+                    user_search.append(luster)
+                    user_search.append(visual_color)
+                    user_search.append(cleavage)
+                    user_search.append(crystal_shape)
+                    user_search.append(remarks)
+
+
+    def no_data(symbol_search):
+        count = (len(user_search))
+        if count == 0:
+            print (f"No data available for {symbol_search.capitalize()}.")
+            time.sleep(2)
+            run = "Y"
+        else:
+            mineral_name     = (user_search)[0]
+            formula_code     = (user_search)[1]
+            spec_grav_range  = (user_search)[2]
+            hardness_range   = (user_search)[3]
+            streak_color     = (user_search)[4]
+            luster           = (user_search)[5]
+            visual_color     = (user_search)[6]
+            cleavage         = (user_search)[7]
+            crystal_shape    = (user_search)[8]
+            remarks          = (user_search)[9]
+            mineral_banner   = (f"Datasheet for {mineral_name.upper()}")
+            printdata()
+            run = input("Search again? [Y/N]")
+
+
+    def mainmenu():
+        clrscr()
+        print(red_bd + main_banner.center(50,' ') + normal + new_line)
+        print("Identify mineral by Characteristics or")
+        print("Search name for mineral datasheet")
+        print(new_line)
+
+
+    def printdata():
+        clrscr()
+        print(red_bd + mineral_banner.center(50,' ') + normal + new_line)
+        print(f"Chemical Formula : {formula_code}")
+        print(f"Specific Gravity : {spec_grav_range}")
+        print(f"Mohs Hardness    : {hardness_range}")
+        print(f"Streak Test Color: {streak_color}")
+        print(f"Type of Luster   : {luster}")
+        print(f"Visual Color     : {visual_color}")
+        print(f"Type of Cleavage : {cleavage}")
+        print(f"Crystal Structure: {crystal_shape}")
+        print(f"Remarks:")
+        
+        user_search_rem = remarks.split(". ")
+    
+        for remark in user_search_rem:
+            if remark != "\n":
+                print(f"{remark}.")
+            else:
+                print(f"{remark}")
+            
+    
+
+    # print main screen
+    mainmenu()
+    search_read = (input("Identify or Datasheet [I/D] "))
+        
+    if search_read.lower() == "d":
+        clrscr()
+        reset_var()
+        print(red_bd + data_banner.center(50,' ') + normal + new_line)
+        datasheet_search = (input("Enter name of mineral: "))
+
+        read_file_datasheet()         
+
+        count = (len(user_search))
+        if count == 0:
+            print(f"No data available for {datasheet_search.capitalize()}.")
+            time.sleep(2)
+            run = "Y"
+                    
+
+        else:
+            mineral_name     = (user_search)[0]
+            formula_code     = (user_search)[1]
+            spec_grav_range  = (user_search)[2]
+            hardness_range   = (user_search)[3]
+            streak_color     = (user_search)[4]
+            luster           = (user_search)[5]
+            visual_color     = (user_search)[6]
+            cleavage         = (user_search)[7]
+            crystal_shape    = (user_search)[8]
+            remarks          = (user_search)[9]
+            mineral_banner   = (f"Datasheet for {mineral_name.upper()}")
+            printdata()
+            run = input("Search again? [Y/N]")
+                    
+
+    elif search_read.lower() == "i":
+        clrscr()
+        reset_var()
+        print(red_bd + ident_banner.center(50,' ') + normal + new_line)
+        print("Enter known information, if unknown, press 'Enter'" + new_line)
+        symbol_search   = (input("Enter the chemical formula  - (example FeS2): "))
+        read_file_identify()
+        no_data()
+        
+        gravity_search  = (input("Enter the specific gravity  - (example 5.0): "))
+        hardness_search = (input("Enter the Mohs hardness     - (example 6.2): "))
+        streak_search   = (input("Enter the streak test color - (example Yellow): "))
+        luster_search   = (input("Enter the luster appearance - (example Metallic): "))
+        color_search    = (input("Enter mineral visual color  - (example Green): "))
+        cleavage_search = (input("Enter mineral cleavage type - (example Basal): "))
+        crystal_search  = (input("Enter mineral crystal type  - (example Isometric): "))
+
+
+
+    else:
+        print("That is not a valid entry.")
+        time.sleep(2)
+        run = "Y"
+        
+
+
+if (run == "Y" or run == "y"):
+    reset_var()
+    mainmenu()
+
+# if "run" doesn't equal Y or y then say bye and end program
+elif (run != "Y" or run != "y"):
+    clrscr()
+    print(new_line)
+    print("Bye...")
+    print(new_line)

@@ -1,0 +1,7 @@
+Urarinite (pitchblende);UO2;6.5-10.9;5-6;Brownish black;Pitch-like, metallic;Black;None;Isometric;Black color with yellow orange and green alterations are typical. Radioactive. Brittle. Opaque. Infusible. Usually massive. Crystals are rare.
+Cinnabar;HgS;8.1;2-2.5;Red to red brown;Adamantine to dull;Bright red to brownish red;Perfect prismatic;Hexagonal;Color, streak, and high specific gravity are characteristic. Usually massive. Disappears when heated on charcoal. When heated in a closed tube with sodium carbonate, metallic mercury is formed.
+Gold;Au;15.6-19.3;2.5-3;Yellow;Metallic;Golden yellow to silvery yellow;None;Isometric;High specific gravity, yellow color, sectility and malleability are characteristic. Fusible.
+Pyrite;FeS2;5.0;6-6.5;Black;Metallic;Pale brass yellow;Poor;Isometric;Usually found in cubic crystals.Crystals often striated. Also called "fools gold" Fuses easily giving fumes of sulphur dioxide. Mineral is brittle.
+Sulphur;S;2.1;1.5-2.5;Yellow;Resinous;Yellow;Poor;Orthorhombic;Yellow color, low specific gravity and hardness are typical. Burns easily. Insoluble in water. Gives strong sulphur dioxide fumes while burning.
+Cryolite;Na3AIF6;2.9-3.0;2.5;White;Vitreous to greasy;Colorless to white;Cubic parting resembles cleavage;Monoclinic;Usually in massive or course granular form. Wax-like appearance. Generally associated with brown siderite. Fuses easily to a white bead. Colors flame yellow. An uncommon mineral.
+
